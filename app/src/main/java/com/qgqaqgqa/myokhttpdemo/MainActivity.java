@@ -43,7 +43,20 @@ public class MainActivity extends AppCompatActivity {
 //        postAsynHttp();
 //        postAsynFile();
 //        downAsynFile();
-        sendMultipart();
+//        sendMultipart();
+        MyOKHttp3Engine.getInstance(this).getAsynHttp("http://www.baidu.com", new ResultCallback() {
+            @Override
+            public void onError(Request request, Exception e) {
+
+            }
+
+            @Override
+            public void onResponse(Response response) {
+                String str = response.networkResponse().toString();
+                Log.i(TAG, str);
+                Toast.makeText(getApplicationContext(), "请求成功", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**
